@@ -94,48 +94,7 @@
         </h2>
       </div>
       <div class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 px-6">
-        <div
-            class="flex flex-col justify-center border-1 rounded-lg shadow-md items-center p-6 space-y-4 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-          <Icon name="lucide:layout" class="h-10 w-10 text-purple-600 dark:text-indigo-400"/>
-          <div class="text-xl font-bold text-gray-800 dark:text-white">每日编码挑战</div>
-          <p class="text-gray-600 dark:text-gray-400 text-center">
-            每天新的前端项目，从简单到复杂，满足不同水平的学习需求。</p>
-        </div>
-        <div
-            class="flex flex-col justify-center border-1 rounded-lg shadow-md items-center p-6 space-y-4 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-          <Icon name="lucide:layout" class="h-10 w-10 text-purple-600 dark:text-indigo-400"/>
-          <div class="text-xl font-bold text-gray-800 dark:text-white">每日编码挑战</div>
-          <p class="text-gray-600 dark:text-gray-400 text-center">
-            每天新的前端项目，从简单到复杂，满足不同水平的学习需求。</p>
-        </div>
-        <div
-            class="flex flex-col justify-center border-1 rounded-lg shadow-md items-center p-6 space-y-4 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-          <Icon name="lucide:layout" class="h-10 w-10 text-purple-600 dark:text-indigo-400"/>
-          <div class="text-xl font-bold text-gray-800 dark:text-white">每日编码挑战</div>
-          <p class="text-gray-600 dark:text-gray-400 text-center">
-            每天新的前端项目，从简单到复杂，满足不同水平的学习需求。</p>
-        </div>
-        <div
-            class="flex flex-col justify-center border-1 rounded-lg shadow-md items-center p-6 space-y-4 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-          <Icon name="lucide:layout" class="h-10 w-10 text-purple-600 dark:text-indigo-400"/>
-          <div class="text-xl font-bold text-gray-800 dark:text-white">每日编码挑战</div>
-          <p class="text-gray-600 dark:text-gray-400 text-center">
-            每天新的前端项目，从简单到复杂，满足不同水平的学习需求。</p>
-        </div>
-        <div
-            class="flex flex-col justify-center border-1 rounded-lg shadow-md items-center p-6 space-y-4 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-          <Icon name="lucide:layout" class="h-10 w-10 text-purple-600 dark:text-indigo-400"/>
-          <div class="text-xl font-bold text-gray-800 dark:text-white">每日编码挑战</div>
-          <p class="text-gray-600 dark:text-gray-400 text-center">
-            每天新的前端项目，从简单到复杂，满足不同水平的学习需求。</p>
-        </div>
-        <div
-            class="flex flex-col justify-center border-1 rounded-lg shadow-md items-center p-6 space-y-4 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-          <Icon name="lucide:layout" class="h-10 w-10 text-purple-600 dark:text-indigo-400"/>
-          <div class="text-xl font-bold text-gray-800 dark:text-white">每日编码挑战</div>
-          <p class="text-gray-600 dark:text-gray-400 text-center">
-            每天新的前端项目，从简单到复杂，满足不同水平的学习需求。</p>
-        </div>
+        <card-feature v-for="feature in featuresCard" :card="feature" :key="feature.title"></card-feature>
       </div>
     </section>
     <section id="pricing"
@@ -145,116 +104,7 @@
           选择适合您的计划
         </h2>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
-          <div class="flex flex-col justify-between space-y-8 p-6 border-2 rounded-lg">
-            <div>
-              <div class="text-2xl font-bold text-gray-800 dark:text-white">免费版</div>
-              <div class="mt-2">适合初学者入门</div>
-              <div class="mt-4 text-4xl font-bold text-gray-800 dark:text-white">¥0/月</div>
-              <ul class="mt-4 space-y-2">
-                <li class="flex items-center  space-x-1">
-                  <Icon name="lucide:check-circle" class="h-5 w-5 text-green-500 dark:text-green-400"/>
-                  <p>
-                    每周3个免费挑战
-                  </p>
-                </li>
-                <li class="flex items-center  space-x-1">
-                  <Icon name="lucide:check-circle" class="h-5 w-5 text-green-500 dark:text-green-400"/>
-                  <p>
-                    每周3个免费挑战
-                  </p>
-                </li>
-                <li class="flex items-center  space-x-1">
-                  <Icon name="lucide:check-circle" class="h-5 w-5 text-green-500 dark:text-green-400"/>
-                  <p>
-                    每周3个免费挑战
-                  </p>
-                </li>
-                <li class="flex items-center  space-x-1">
-                  <Icon name="lucide:check-circle" class="h-5 w-5 text-green-500 dark:text-green-400"/>
-                  <p>
-                    每周3个免费挑战
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <button raised class="w-full h-full bg-purple-600 hover:bgpurple-700 text-white font-bold py-2 px-4 rounded">
-              开始免费体验
-            </button>
-          </div>
-          <div class="flex flex-col justify-between space-y-8 p-6 border-2 border-indigo-500 rounded-lg">
-            <div>
-              <div class="text-2xl font-bold text-gray-800 dark:text-white">免费版</div>
-              <div class="mt-2">适合初学者入门</div>
-              <div class="mt-4 text-4xl font-bold text-gray-800 dark:text-white">¥0/月</div>
-              <ul class="mt-4 space-y-2">
-                <li class="flex items-center  space-x-1">
-                  <Icon name="lucide:check-circle" class="h-5 w-5 text-green-500 dark:text-green-400"/>
-                  <p>
-                    每周3个免费挑战
-                  </p>
-                </li>
-                <li class="flex items-center  space-x-1">
-                  <Icon name="lucide:check-circle" class="h-5 w-5 text-green-500 dark:text-green-400"/>
-                  <p>
-                    每周3个免费挑战
-                  </p>
-                </li>
-                <li class="flex items-center  space-x-1">
-                  <Icon name="lucide:check-circle" class="h-5 w-5 text-green-500 dark:text-green-400"/>
-                  <p>
-                    每周3个免费挑战
-                  </p>
-                </li>
-                <li class="flex items-center  space-x-1">
-                  <Icon name="lucide:check-circle" class="h-5 w-5 text-green-500 dark:text-green-400"/>
-                  <p>
-                    每周3个免费挑战
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <button raised class="w-full h-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
-              开始免费体验
-            </button>
-          </div>
-
-          <div class="flex flex-col justify-between space-y-8 p-6 border-2 rounded-lg">
-            <div>
-              <div class="text-2xl font-bold text-gray-800 dark:text-white">免费版</div>
-              <div class="mt-2">适合初学者入门</div>
-              <div class="mt-4 text-4xl font-bold text-gray-800 dark:text-white">¥0/月</div>
-              <ul class="mt-4 space-y-2">
-                <li class="flex items-center  space-x-1">
-                  <Icon name="lucide:check-circle" class="h-5 w-5 text-green-500 dark:text-green-400"/>
-                  <p>
-                    每周3个免费挑战
-                  </p>
-                </li>
-                <li class="flex items-center  space-x-1">
-                  <Icon name="lucide:check-circle" class="h-5 w-5 text-green-500 dark:text-green-400"/>
-                  <p>
-                    每周3个免费挑战
-                  </p>
-                </li>
-                <li class="flex items-center  space-x-1">
-                  <Icon name="lucide:check-circle" class="h-5 w-5 text-green-500 dark:text-green-400"/>
-                  <p>
-                    每周3个免费挑战
-                  </p>
-                </li>
-                <li class="flex items-center  space-x-1">
-                  <Icon name="lucide:check-circle" class="h-5 w-5 text-green-500 dark:text-green-400"/>
-                  <p>
-                    每周3个免费挑战
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <button raised class="w-full h-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
-              开始免费体验
-            </button>
-          </div>
-
+          <card-price v-for="priceCard in priceCard" :card="priceCard.card" :highlight="priceCard.highlight" :key="priceCard.card.title"></card-price>
           <div>
 
           </div>
@@ -267,30 +117,7 @@
           开发者社区
         </h2>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
-          <div class="flex border-[1px] rounded-lg flex-col justify-between p-6 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-            <div class="pt-4">
-              <p class="text-gray-600 dark:text-gray-300 italic">"FrontEndCrafter的每日挑战极大地提升了我的CSS技能，尤其是在响应式设计方面。"</p>
-            </div>
-            <div class="text-right text-sm font-medium text-gray-700 dark:text-gray-300">
-              - 李明，前端开发者
-            </div>
-          </div>
-          <div class="flex flex-col  border-[1px] rounded-lg justify-between p-6 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-            <div class="pt-4">
-              <p class="text-gray-600 dark:text-gray-300 italic">"FrontEndCrafter的每日挑战极大地提升了我的CSS技能，尤其是在响应式设计方面。"</p>
-            </div>
-            <div class="text-right text-sm font-medium text-gray-700 dark:text-gray-300">
-              - 李明，前端开发者
-            </div>
-          </div>
-          <div class="flex flex-col  border-[1px] rounded-lg justify-between p-6 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-            <div class="pt-4">
-              <p class="text-gray-600 dark:text-gray-300 italic">"FrontEndCrafter的每日挑战极大地提升了我的CSS技能，尤其是在响应式设计方面。"</p>
-            </div>
-            <div class="text-right text-sm font-medium text-gray-700 dark:text-gray-300">
-              - 李明，前端开发者
-            </div>
-          </div>
+          <card-community v-for="card in communityCard" :card="card" ></card-community>
         </div>
       </div>
     </section>
@@ -310,6 +137,105 @@
 </template>
 
 <script setup lang="ts">
+
+
+// price-card
+import type {PriceCard, CommunityCard, FeatureCard} from "~/types/card";
+
+interface PriceCardProps {
+  card: PriceCard,
+  highlight: boolean
+}
+
+const priceCard = markRaw<PriceCardProps[]>([
+  {
+    card: {
+      title: '免费',
+      description: '适合初学者入门',
+      price: '$0/月',
+      features: ['每周3个免费挑战', '社区基本访问权限', '在线代码编辑器'],
+      buttonText: '开始免费体验'
+    },
+    highlight: false
+  },
+  {
+    card: {
+      title: '专业版',
+      description: '适合有经验的开发者',
+      price: '$59/月',
+      features: ['无限制访问所有挑战', '专家点评和建议', '高级社区功能','个人技能认证'],
+      buttonText: '升级为专业版本'
+    },
+    highlight: true
+  },
+  {
+    card: {
+      title: '企业版',
+      description: '适合企业级团队',
+      price: '$299/月',
+      features: ['所有专业版功能', '团队协作功能', '自定义挑战','团队进度跟踪'],
+      buttonText: '加入企业版'
+    },
+    highlight: false
+  }
+])
+
+
+const communityCard = markRaw<CommunityCard[]>([
+  {
+    quote: 'FrontEndCrafter的每日挑战极大地提升了我的CSS技能，尤其是在响应式设计方面。',
+    author: '李明，前端开发者'
+  },
+  {
+    quote: '通过完成实际项目，我学会了如何将设计稿完美还原为代码。这些经验在我找工作时非常有帮助。',
+    author: '张华，UI/UX设计师'
+  },
+  {
+    quote: '社区里的讨论让我了解到了很多解决问题的新思路。这里真的是前端开发者的天堂！',
+    author: '王芳，全栈工程师'
+  }
+])
+
+
+const featuresCard = markRaw<FeatureCard[]>([
+    {
+      icon: 'lucide:code',
+      color: 'indigo',
+      title: '每日编码挑战',
+      description: '每天新的前端项目，从简单到复杂，满足不同水平的学习需求。'
+    },
+    {
+      icon: 'lucide:layout',
+      color: 'green',
+      title: '真实世界项目',
+      description: '模拟实际工作中的前端任务，提升您的项目经验。'
+    },
+  {
+    icon: 'lucide:palette',
+    color: 'blue',
+    title: '设计到代码',
+    description: '将设计图转化为代码，提升您的前端还原能力。'
+  },
+  {
+    icon: 'lucide:zap',
+    color: 'yellow',
+    title: '即时反馈',
+    description: '在线编辑器with实时预览，快速迭代您的代码。'
+  },
+  {
+    icon: 'lucide:users',
+    color:'violet',
+    title: '社区互动',
+    description: '与其他开发者分享解决方案，学习多种实现方式。'
+  },
+  {
+    icon: 'lucide:trophy',
+    color: 'red',
+    title: '技能认证',
+    description: '完成挑战获得徽章，展示您的前端技能成长。'
+  }
+])
+
 
 </script>
 
