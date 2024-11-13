@@ -9,7 +9,7 @@
             to="/"
             class="text-xl font-bold text-white hover:text-gray-300"
           >
-            FrontCraft
+            FrontCrafter
           </NuxtLink>
         </div>
 

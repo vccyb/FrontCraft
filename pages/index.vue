@@ -329,6 +329,12 @@ const featuresCard = markRaw<FeatureCard[]>([
     description: "完成挑战获得徽章，展示您的前端技能成长。",
   },
 ]);
+
+
+definePageMeta({
+  layout: "home",
+})
+
 </script>
 
 <style scoped></style>
