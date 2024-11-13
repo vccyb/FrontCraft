@@ -62,12 +62,16 @@ import { ref, watch, onMounted } from "vue";
 import Button from "primevue/button";
 import Splitter from "primevue/splitter";
 import SplitterPanel from "primevue/splitterpanel";
+
 import * as monaco from "monaco-editor";
-import editorWorker from "monaco-editor/esm/vs/editor/editor.worker?worker";
-import jsonWorker from "monaco-editor/esm/vs/language/json/json.worker?worker";
-import cssWorker from "monaco-editor/esm/vs/language/css/css.worker?worker";
-import htmlWorker from "monaco-editor/esm/vs/language/html/html.worker?worker";
-import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker";
+
+import {
+  editorOptions,
+  initTheme,
+  initWorkers,
+  defaultCode,
+  type CodeContent,
+} from "~/config/editor";
 
 // 编辑器容器引用
 const htmlEditorContainer = ref<HTMLElement | null>(null);
@@ -79,74 +83,10 @@ let htmlEditor: monaco.editor.IStandaloneCodeEditor | null = null;
 let cssEditor: monaco.editor.IStandaloneCodeEditor | null = null;
 let jsEditor: monaco.editor.IStandaloneCodeEditor | null = null;
 
-const editorOptions: monaco.editor.IStandaloneEditorConstructionOptions = {
-  // 外观
-  theme: "vs-dark",
-  fontSize: 14,
-  fontFamily: 'Menlo, Monaco, "Courier New", monospace',
-  minimap: { enabled: false },
-  scrollBeyondLastLine: false,
-
-  // 编辑器功能
-  tabSize: 2,
-  automaticLayout: true,
-  formatOnPaste: true,
-  lineNumbers: "on",
-  lineNumbersMinChars: 3,
-  folding: true,
-  wordWrap: "on",
-
-  // 滚动条
-  scrollbar: {
-    vertical: "auto",
-    horizontal: "auto",
-    verticalScrollbarSize: 10,
-    horizontalScrollbarSize: 10,
-  },
-
-  // 智能提示
-  quickSuggestions: true,
-  suggestOnTriggerCharacters: true,
-
-  // 括号对
-  bracketPairColorization: {
-    enabled: true,
-  },
-};
-
-// 简单的主题配置
-monaco.editor.defineTheme("customDarkTheme", {
-  base: "vs-dark",
-  inherit: true,
-  rules: [],
-  colors: {
-    "editorGutter.background": "#1f2937",
-    "editorLineNumber.foreground": "#6B7280",
-  },
-});
-
-monaco.editor.setTheme("customDarkTheme");
-
 // 初始化 Monaco Editor
 const initMonaco = () => {
-  // 配置 worker
-  (self as any).MonacoEnvironment = {
-    getWorker(_: any, label: string) {
-      if (label === "json") {
-        return new jsonWorker();
-      }
-      if (label === "css" || label === "scss" || label === "less") {
-        return new cssWorker();
-      }
-      if (label === "html" || label === "handlebars" || label === "razor") {
-        return new htmlWorker();
-      }
-      if (label === "typescript" || label === "javascript") {
-        return new tsWorker();
-      }
-      return new editorWorker();
-    },
-  };
+  initWorkers();
+  initTheme();
 
   // 创建编辑器实例
   if (htmlEditorContainer.value) {
