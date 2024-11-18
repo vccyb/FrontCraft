@@ -19,3 +19,13 @@ export interface FeatureCard {
   title: string;
   description: string;
 }
+
+
+
+export interface ChallengeCard {
+  id: string;
+  title: string;
+  description: string;
+  difficulty: string;
+  img: string;
+}

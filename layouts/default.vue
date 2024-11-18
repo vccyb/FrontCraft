@@ -24,7 +24,7 @@
             <NuxtLink to="/challenges" class="text-white nav-link"
               >社区</NuxtLink
             >
-            <NuxtLink to="/challenges" class="text-white nav-link"
+            <NuxtLink to="/leaderboard" class="text-white nav-link"
               >排行榜</NuxtLink
             >
             <NuxtLink to="/challenges" class="text-white nav-link"
@@ -46,7 +46,7 @@
     </header>
 
     <!-- 主要内容区域 -->
-    <main class="flex-1 flex flex-col">
+    <main class="flex-1 flex flex-col bg-gray-900">
       <slot />
     </main>
   </div>

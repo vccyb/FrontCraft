@@ -4,6 +4,9 @@ import Aura from "@primevue/themes/aura";
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
+  css: [
+    "primeicons/primeicons.css", // 这里引入'
+  ],
   modules: ["@nuxtjs/tailwindcss", "@primevue/nuxt-module", "@nuxt/icon"],
   primevue: {
     options: {
