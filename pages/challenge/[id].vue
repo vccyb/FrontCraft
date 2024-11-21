@@ -2,7 +2,7 @@
   <main class="w-full container mx-auto px-4 py-8 flex flex-col bg-gray-900">
     <!-- title -->
     <div class="flex justify-between items-center text-white">
-      <h1 class="text-3xl font-bold">Purple Messages</h1>
+      <h1 class="text-3xl font-bold indent-2">Purple Messages - {{ id }}</h1>
       <div class="flex gap-2 items-center text-xl">
         <icon name="fluent-emoji-flat:star"></icon>
         <span> Medium </span>
@@ -88,6 +88,10 @@
 </template>
 
 <script lang="ts" setup>
+const {
+  params: { id },
+} = useRoute();
+
 const card = ref({
   id: 1,
   name: "挑战1",
