@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   css: [
     "primeicons/primeicons.css", // 这里引入'
   ],
+
   modules: ["@nuxtjs/tailwindcss", "@primevue/nuxt-module", "@nuxt/icon"],
   primevue: {
     options: {

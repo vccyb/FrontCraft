@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[100vh] flex flex-col bg-gray-900">
+  <div class="min-h-screen w-full flex flex-col bg-gray-900">
     <!-- 顶部导航栏 -->
 
     <header class="h-14 flex items-center px-4 border-b border-gray-700">
@@ -18,21 +18,22 @@
             <NuxtLink to="/challenges" class="text-white nav-link"
               >挑战</NuxtLink
             >
-            <NuxtLink to="/challenges" class="text-white nav-link"
-              >课程</NuxtLink
-            >
-            <NuxtLink to="/challenges" class="text-white nav-link"
+            <NuxtLink to="/courses" class="text-white nav-link">课程</NuxtLink>
+            <NuxtLink to="/community" class="text-white nav-link"
               >社区</NuxtLink
             >
             <NuxtLink to="/leaderboard" class="text-white nav-link"
               >排行榜</NuxtLink
             >
-            <NuxtLink to="/challenges" class="text-white nav-link"
-              >地图</NuxtLink
-            >
+            <NuxtLink to="/map" class="text-white nav-link">地图</NuxtLink>
           </nav>
 
-          <Button label="登录" severity="help" size="small" />
+          <Button
+            label="登录"
+            severity="help"
+            size="small"
+            @click="navigateTo('/login')"
+          />
           <Avatar
             label="v"
             size="large"
@@ -46,7 +47,7 @@
     </header>
 
     <!-- 主要内容区域 -->
-    <main class="flex-1 flex flex-col bg-gray-900">
+    <main class="flex flex-1 flex-col min-h-0 w-full bg-gray-900">
       <slot />
     </main>
   </div>
