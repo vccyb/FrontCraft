@@ -19,13 +19,21 @@
         <hr />
         <p class="or">或者使用以下登陆</p>
         <div class="buttons">
-          <button>Google</button>
-          <button>FaceBook</button>
+          <button class="flex justify-center items-center gap-1">
+            <Icon name="mdi:google"></Icon> <span> Google</span>
+          </button>
+          <button
+            @click="handleSignWithGithub"
+            class="flex justify-center items-center gap-1"
+          >
+            <Icon name="mdi:github"></Icon> <span>GitHub </span>
+          </button>
         </div>
         <p class="tips">
           你还没有账号?
           <a class="cursor-pointer" @click="navigateTo('/register')">注册</a>
         </p>
+        <button @click="signOut">注销</button>
       </div>
       <div class="right-col">
         <button class="close-button" @click="navigateTo('/challenges')">
@@ -59,6 +67,22 @@
 definePageMeta({
   layout: "login",
 });
+
+const auth = useAuth();
+
+const handleSignWithGithub = async () => {
+  try {
+    await auth.signIn("github");
+    navigateTo("/challenges");
+  } catch (error) {
+    console.error("登录失败:", error);
+    // 可以在这里处理错误，比如显示错误消息
+  }
+};
+
+const signOut = async () => {
+  await auth.signOut();
+};
 </script>
 
 <style>

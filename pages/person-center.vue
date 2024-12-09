@@ -180,6 +180,10 @@ const challenges = ref<ChallengeCard[]>([
     img: "https://picsum.photos/200/300",
   },
 ]);
+
+definePageMeta({
+  middleware: ["auth"],
+});
 </script>
 
 <style scoped>
