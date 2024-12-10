@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     "primeicons/primeicons.css", // 这里引入'
   ],
   auth: {
+    requestTimeout: 5000,
     provider: {
       type: "authjs",
       trustHost: false,

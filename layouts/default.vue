@@ -43,11 +43,14 @@
             size="small"
             @click="navigateTo('/login')"
           />
+          <span class="text-white font-bold">{{
+            userInfo?.name ?? "访客"
+          }}</span>
           <Avatar
-            label="v"
             size="large"
             shape="circle"
             style="transform: scale(0.8)"
+            :image="userInfo?.image"
             class="person-avatar"
             @click="navigateTo('/person-center')"
           />
@@ -66,6 +69,10 @@
 import Button from "primevue/button";
 
 const auth = useAuth();
+
+console.log(auth);
+
+const userInfo = computed(() => auth.data.value?.user);
 
 const isLoggedIn = computed(() => auth.status.value === "authenticated");
 const toast = useToast();
