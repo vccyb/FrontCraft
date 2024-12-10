@@ -1,4 +1,5 @@
 <template>
+  <Toast />
   <div>
     <main class="login-main">
       <div class="left-col">
@@ -33,7 +34,13 @@
           你还没有账号?
           <a class="cursor-pointer" @click="navigateTo('/register')">注册</a>
         </p>
-        <button @click="signOut">注销</button>
+        <button
+          v-if="isLoggedIn"
+          class="bg-purple-400 p-2 rounded-md text-white font-bold"
+          @click="signOut"
+        >
+          注销
+        </button>
       </div>
       <div class="right-col">
         <button class="close-button" @click="navigateTo('/challenges')">
@@ -67,13 +74,33 @@
 definePageMeta({
   layout: "login",
 });
-
 const auth = useAuth();
 
+const isLoggedIn = computed(() => auth.status.value === "authenticated");
+const toast = useToast();
 const handleSignWithGithub = async () => {
   try {
-    await auth.signIn("github");
-    navigateTo("/challenges");
+    const auth = useAuth();
+    console.log(auth.status.value);
+    if (isLoggedIn.value) {
+      return navigateTo("/challenges");
+    }
+
+    // 先显示提示
+    toast.add({
+      severity: "success",
+      summary: "账号登陆与注销",
+      detail: "您的账号已登陆",
+      life: 2000,
+    });
+
+    // 短暂延迟确保用户看到提示
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    await auth.signIn("github", {
+      callbackUrl: "/challenges",
+      redirect: true,
+    });
   } catch (error) {
     console.error("登录失败:", error);
     // 可以在这里处理错误，比如显示错误消息
@@ -81,6 +108,16 @@ const handleSignWithGithub = async () => {
 };
 
 const signOut = async () => {
+  // 先显示提示
+  toast.add({
+    severity: "success",
+    summary: "账号登陆与注销",
+    detail: "您的账号已注销",
+    life: 2000,
+  });
+
+  // 短暂延迟确保用户看到提示
+  await new Promise((resolve) => setTimeout(resolve, 500));
   await auth.signOut();
 };
 </script>

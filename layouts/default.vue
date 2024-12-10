@@ -1,4 +1,5 @@
 <template>
+  <Toast />
   <div class="min-h-screen w-full flex flex-col bg-gray-900">
     <!-- 顶部导航栏 -->
 
@@ -29,6 +30,14 @@
           </nav>
 
           <Button
+            v-if="isLoggedIn"
+            label="注销"
+            severity="help"
+            size="small"
+            @click="handleSignOut"
+          />
+          <Button
+            v-else
             label="登录"
             severity="help"
             size="small"
@@ -55,6 +64,27 @@
 
 <script setup lang="ts">
 import Button from "primevue/button";
+
+const auth = useAuth();
+
+const isLoggedIn = computed(() => auth.status.value === "authenticated");
+const toast = useToast();
+const handleSignOut = async () => {
+  // 先显示提示
+  toast.add({
+    severity: "success",
+    summary: "账号登陆与注销",
+    detail: "您的账号已注销",
+    life: 2000,
+  });
+
+  // 短暂延迟确保用户看到提示
+  await new Promise((resolve) => setTimeout(resolve, 500));
+  await auth.signOut({
+    callbackUrl: "/login",
+    redirect: true,
+  });
+};
 </script>
 
 <style scoped>
