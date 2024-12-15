@@ -1,0 +1,120 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"  // 建议使用 PostgreSQL 以支持更多特性
+  url      = env("DATABASE_URL")
+}
+
+// 用户模型
+model User {
+  id            String      @id @default(cuid())
+  name          String?
+  email         String?     @unique
+  image         String?     // 头像
+  githubId      String?     @unique  // GitHub ID
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  
+  // 用户统计
+  totalLikes    Int         @default(0)
+  totalViews    Int         @default(0)
+  streak        Int         @default(0)  // 连续提交天数
+  
+  // 关联
+  submissions   Submission[]
+  challenges    Challenge[]  // 创建的挑战
+  likes         Like[]       // 点赞记录
+}
+
+// 挑战模型
+model Challenge {
+  id          String      @id @default(cuid())
+  title       String      // 标题
+  description String      // 描述
+  difficulty  Difficulty  // 难度
+  type        ChallengeType // 类型
+  status      ChallengeStatus // 状态
+  
+  // 挑战内容
+  htmlTemplate String?    // HTML 模板
+  cssTemplate  String?    // CSS 模板
+  jsTemplate   String?    // JS 模板
+  
+  // 统计信息
+  participants Int       @default(0)
+  likes        Int       @default(0)
+  views        Int       @default(0)
+  
+  // 时间
+  startDate    DateTime  // 开始时间
+  endDate      DateTime? // 结束时间
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  
+  // 关联
+  authorId     String    // 创建者ID
+  author       User      @relation(fields: [authorId], references: [id])
+  submissions  Submission[]
+  likedBy      Like[]
+}
+
+// 提交模型
+model Submission {
+  id          String    @id @default(cuid())
+  html        String    // HTML 代码
+  css         String    // CSS 代码
+  js          String?   // JS 代码
+  preview     String?   // 预览图URL
+  
+  // 统计
+  likes       Int       @default(0)
+  views       Int       @default(0)
+  
+  // 时间
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  // 关联
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  challengeId String
+  challenge   Challenge @relation(fields: [challengeId], references: [id])
+}
+
+// 点赞模型
+model Like {
+  id          String    @id @default(cuid())
+  createdAt   DateTime  @default(now())
+  
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  challengeId String
+  challenge   Challenge @relation(fields: [challengeId], references: [id])
+
+  @@unique([userId, challengeId])
+}
+
+// 枚举类型
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum ChallengeType {
+  DAILY      // 每日挑战
+  WEEKLY     // 每周挑战
+  SPECIAL    // 特别挑战
+  CUSTOM     // 自定义挑战
+}
+
+enum ChallengeStatus {
+  UPCOMING   // 即将开始
+  ACTIVE     // 进行中
+  ENDED      // 已结束
+}

@@ -15,6 +15,7 @@
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@primevue/nuxt-module": "^4.2.1",
     "@primevue/themes": "^4.2.1",
+    "@prisma/nuxt": "0.1.3",
     "@sidebase/nuxt-auth": "^0.9.4",
     "monaco-editor": "^0.52.0",
     "next-auth": "4.21.1",
@@ -23,5 +24,9 @@
     "primevue": "^4.2.1",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@prisma/client": "6.0.1",
+    "prisma": "6.0.1"
   }
 }
